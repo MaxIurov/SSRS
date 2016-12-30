@@ -1,0 +1,9 @@
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\bin\Debug\myVBcode.dll
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\bin\Debug\myVBcode.pdb
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\bin\Debug\myVBcode.xml
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\obj\Debug\myVBcode.vbprojResolveAssemblyReference.cache
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\obj\Debug\myVBcode.Resources.resources
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\obj\Debug\myVBcode.vbproj.GenerateResource.Cache
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\obj\Debug\myVBcode.dll
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\obj\Debug\myVBcode.xml
+C:\filez\ssrsTraining\ssrsTraining01\myVBcode\obj\Debug\myVBcode.pdb

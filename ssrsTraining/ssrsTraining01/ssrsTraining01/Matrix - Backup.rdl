@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="AdventureWorks">
+      <ConnectionProperties>
+        <IntegratedSecurity>true</IntegratedSecurity>
+        <ConnectString>Data Source=MACH5\SQLEXPRESS;Initial Catalog=AdventureWorks</ConnectString>
+        <DataProvider>SQL</DataProvider>
+      </ConnectionProperties>
+      <rd:DataSourceID>ce559009-b0f0-47fe-99e9-3d5f9e65cff1</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>0.5in</BottomMargin>
+  <RightMargin>0.5in</RightMargin>
+  <PageWidth>11in</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="Grouper1">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Grouper 1:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Groupers</DataSetName>
+          <ValueField>Value</ValueField>
+          <LabelField>Label</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Grouper2">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Grouper 2:</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Groupers</DataSetName>
+          <ValueField>Value</ValueField>
+          <LabelField>Label</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="TimeSlicer">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ShipDate</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Slicer:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>OrderDate</Value>
+            <Label>Order Date</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>DueDate</Value>
+            <Label>Due Date</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>ShipDate</Value>
+            <Label>Ship Date</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Month">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Month:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>January</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>February</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>3</Value>
+            <Label>March</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>4</Value>
+            <Label>April</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>5</Value>
+            <Label>May</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>6</Value>
+            <Label>June</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>7</Value>
+            <Label>July</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>8</Value>
+            <Label>August</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>9</Value>
+            <Label>September</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>10</Value>
+            <Label>October</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>11</Value>
+            <Label>November</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>12</Value>
+            <Label>December</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Year">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>2004</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Year:</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>2002</Value>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2003</Value>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2004</Value>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>1.25in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>1.5in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>1.59836in</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="GROUPER1">
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <BorderColor>
+                      <Default>DimGray</Default>
+                    </BorderColor>
+                    <BackgroundColor>White</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields(Parameters!Grouper1.Value).Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <rd:DefaultName>textbox4</rd:DefaultName>
+                    <ZIndex>1</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>700</FontWeight>
+                      <FontSize>8pt</FontSize>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <BackgroundColor>#60759b</BackgroundColor>
+                      <Color>White</Color>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Grand Total</Value>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <FontWeight>700</FontWeight>
+                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                </Style>
+              </Subtotal>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields(Parameters!Grouper1.Value).Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_Grouper1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields(Parameters!Grouper1.Value).Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1.35246in</Width>
+            <DynamicRows>
+              <ReportItems>
+                <Textbox Name="EMPLOYEE_NAME">
+                  <rd:DefaultName>EMPLOYEE_NAME</rd:DefaultName>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <BorderColor>
+                      <Default>DimGray</Default>
+                    </BorderColor>
+                    <BackgroundColor>Lavender</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields(Parameters!Grouper2.Value).Value</Value>
+                </Textbox>
+              </ReportItems>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox3">
+                    <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>700</FontWeight>
+                      <FontSize>8pt</FontSize>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <Color>DimGray</Color>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <FontWeight>700</FontWeight>
+                  <BackgroundColor>White</BackgroundColor>
+                </Style>
+              </Subtotal>
+              <Visibility>
+                <ToggleItem>GROUPER1</ToggleItem>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields(Parameters!Grouper2.Value).Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_Grouper2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields(Parameters!Grouper2.Value).Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <DynamicColumns>
+              <ReportItems>
+                <Textbox Name="textbox10">
+                  <rd:DefaultName>textbox10</rd:DefaultName>
+                  <ZIndex>11</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <BorderWidth>
+                      <Right>2pt</Right>
+                    </BorderWidth>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>700</FontWeight>
+                    <FontSize>11pt</FontSize>
+                    <BorderColor>
+                      <Default>DimGray</Default>
+                    </BorderColor>
+                    <BackgroundColor>#60759b</BackgroundColor>
+                    <Color>White</Color>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=MonthName(Month(Fields(Parameters!TimeSlicer.Value).Value))</Value>
+                </Textbox>
+              </ReportItems>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox11">
+                    <rd:DefaultName>textbox11</rd:DefaultName>
+                    <ZIndex>10</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <BorderWidth>
+                        <Right>2pt</Right>
+                      </BorderWidth>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>700</FontWeight>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <BackgroundColor>#60759b</BackgroundColor>
+                      <Color>White</Color>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Grand Total - Year Variance</Value>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <FontWeight>700</FontWeight>
+                  <BackgroundColor>White</BackgroundColor>
+                  <Color>Black</Color>
+                </Style>
+              </Subtotal>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Month(Fields(Parameters!TimeSlicer.Value).Value)</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_ColumnGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Month(Fields(Parameters!TimeSlicer.Value).Value)</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicColumns>
+            <Height>0.25in</Height>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <DynamicColumns>
+              <ReportItems>
+                <Textbox Name="YEAR_COLUMN">
+                  <CanShrink>true</CanShrink>
+                  <ZIndex>9</ZIndex>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <BorderWidth>
+                      <Right>2pt</Right>
+                    </BorderWidth>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>700</FontWeight>
+                    <FontSize>9pt</FontSize>
+                    <BorderColor>
+                      <Default>DimGray</Default>
+                    </BorderColor>
+                    <BackgroundColor>Wheat</BackgroundColor>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Year(Fields(Parameters!TimeSlicer.Value).Value)</Value>
+                </Textbox>
+              </ReportItems>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox9">
+                    <ZIndex>8</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontWeight>700</FontWeight>
+                      <FontSize>9pt</FontSize>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <BackgroundColor>Wheat</BackgroundColor>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total Variance</Value>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <FontWeight>700</FontWeight>
+                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  <Color>Black</Color>
+                </Style>
+              </Subtotal>
+              <Visibility>
+                <ToggleItem>textbox10</ToggleItem>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Year(Fields(Parameters!TimeSlicer.Value).Value)</SortExpression>
+                  <Direction>Descending</Direction>
+                </SortBy>
+              </Sorting>
+              <Grouping Name="matrix1_SLICER">
+                <GroupExpressions>
+                  <GroupExpression>=Year(Fields(Parameters!TimeSlicer.Value).Value)</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+            </DynamicColumns>
+            <Height>0.21in</Height>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.21in</Height>
+            <StaticColumns>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox25">
+                    <ZIndex>7</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=IIF((Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1")),"Order Qty","Qty Variance")</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox1">
+                    <rd:DefaultName>textbox1</rd:DefaultName>
+                    <ZIndex>6</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=IIF((Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1")),"Line Total","Line Variance")</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+            </StaticColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <DataSetName>AW_Sales</DataSetName>
+        <Top>1.75in</Top>
+        <ZIndex>2</ZIndex>
+        <Width>8.45082in</Width>
+        <Corner>
+          <ReportItems>
+            <Rectangle Name="rectangle2">
+              <ZIndex>12</ZIndex>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+                <BorderColor>
+                  <Default>DimGray</Default>
+                </BorderColor>
+              </Style>
+            </Rectangle>
+          </ReportItems>
+        </Corner>
+        <Style>
+          <FontSize>8pt</FontSize>
+        </Style>
+        <Height>1.17334in</Height>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.25167in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Rectangle Name="rectangle1">
+                    <ReportItems>
+                      <Textbox Name="QTY_COL">
+                        <ZIndex>1</ZIndex>
+                        <Width>0.5in</Width>
+                        <Style>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <FontWeight>700</FontWeight>
+                          <FontSize>8pt</FontSize>
+                          <Format>N0</Format>
+                          <BackgroundColor>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),"White","WhiteSmoke")</BackgroundColor>
+                          <Color>=IIF((Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1")),"Black", IIF(Me.Value &lt; 0, "Red","Green"))</Color>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <Height>0.24625in</Height>
+                        <Value>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),Sum(Fields!OrderQty.Value),Sum(IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, CDbl(Fields!OrderQty.Value) ,CDbl(Fields!OrderQty.Value) * -1 )))</Value>
+                      </Textbox>
+                      <Textbox Name="textbox8">
+                        <Left>0.5in</Left>
+                        <DataElementOutput>Output</DataElementOutput>
+                        <Style>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <FontWeight>700</FontWeight>
+                          <FontSize>8pt</FontSize>
+                          <Format>P1</Format>
+                          <BackgroundColor>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),"White","WhiteSmoke")</BackgroundColor>
+                          <Color>=IIF(Me.Value &lt; 0, "Red","Green")</Color>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <Height>0.24625in</Height>
+                        <Value>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),"",IIF(SUM(IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, cdbl(0), cdbl(Fields!OrderQty.Value)))=0,0,cdbl(ReportItems!QTY_COL.Value) / SUM(IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, cdbl(0), cdbl(Fields!OrderQty.Value)))))</Value>
+                      </Textbox>
+                    </ReportItems>
+                    <ZIndex>3</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                    </Style>
+                  </Rectangle>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Rectangle Name="rectangle3">
+                    <ReportItems>
+                      <Textbox Name="textbox5">
+                        <Left>0.75in</Left>
+                        <DataElementOutput>Output</DataElementOutput>
+                        <rd:DefaultName>textbox5</rd:DefaultName>
+                        <ZIndex>1</ZIndex>
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <FontWeight>700</FontWeight>
+                          <FontSize>8pt</FontSize>
+                          <Format>P1</Format>
+                          <BackgroundColor>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),"White","WhiteSmoke")</BackgroundColor>
+                          <Color>=IIF(Me.Value &lt; 0, "Red","Green")</Color>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <Height>0.24625in</Height>
+                        <Value>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),"",IIF(SUM(IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, cdbl(0), cdbl(Fields!LineTotal.Value)))=0,0,cdbl(ReportItems!LINETOT_COL.Value) / SUM(IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, cdbl(0), cdbl(Fields!LineTotal.Value)))))</Value>
+                      </Textbox>
+                      <Textbox Name="LINETOT_COL">
+                        <Width>0.75in</Width>
+                        <Style>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <FontWeight>700</FontWeight>
+                          <FontSize>8pt</FontSize>
+                          <Format>C0</Format>
+                          <BackgroundColor>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),"White","WhiteSmoke")</BackgroundColor>
+                          <Color>=IIF((Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1")),"Black",IIF(Me.Value &lt; 0, "Red","Green"))</Color>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <Height>0.24625in</Height>
+                        <Value>=IIF(Inscope("matrix1_SLICER") AND InScope("matrix1_ColumnGroup1"),Sum(Fields!LineTotal.Value),Sum(IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, Fields!LineTotal.Value, Fields!LineTotal.Value * -1)))</Value>
+                      </Textbox>
+                    </ReportItems>
+                    <ZIndex>2</ZIndex>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <BorderColor>
+                        <Default>DimGray</Default>
+                      </BorderColor>
+                    </Style>
+                  </Rectangle>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+      <Chart Name="chart1">
+        <Legend>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <FontSize>6pt</FontSize>
+          </Style>
+          <Position>RightCenter</Position>
+        </Legend>
+        <Subtype>Plain</Subtype>
+        <Title />
+        <Height>1.5in</Height>
+        <CategoryAxis>
+          <Axis>
+            <Title />
+            <Style>
+              <FontSize>7pt</FontSize>
+            </Style>
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Visible>true</Visible>
+          </Axis>
+        </CategoryAxis>
+        <PointWidth>0</PointWidth>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <DataSetName>AW_Sales</DataSetName>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <StaticSeries>
+              <StaticMember>
+                <Label>=Sum(Fields!LineTotal.Value)</Label>
+              </StaticMember>
+            </StaticSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>0.125in</Top>
+        <PlotArea>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <BorderColor>
+              <Default>Gainsboro</Default>
+            </BorderColor>
+            <BackgroundColor>White</BackgroundColor>
+          </Style>
+        </PlotArea>
+        <ValueAxis>
+          <Axis>
+            <Title />
+            <Style>
+              <FontSize>7pt</FontSize>
+              <Format>C0</Format>
+            </Style>
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+                <BorderColor>
+                  <Default>Gainsboro</Default>
+                </BorderColor>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <ZIndex>1</ZIndex>
+        <Type>Column</Type>
+        <Width>9.625in</Width>
+        <CategoryGroupings>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="chart1_CategoryGroupMonth">
+                <GroupExpressions>
+                  <GroupExpression>=Month(Fields(Parameters!TimeSlicer.Value).Value)</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Month(Fields(Parameters!TimeSlicer.Value).Value)</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Label>=MonthName(Month(Fields(Parameters!TimeSlicer.Value).Value))</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+          <CategoryGrouping>
+            <DynamicCategories>
+              <Grouping Name="chart1_CategoryGroupYear">
+                <GroupExpressions>
+                  <GroupExpression>=Year(Fields(Parameters!TimeSlicer.Value).Value)</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Year(Fields(Parameters!TimeSlicer.Value).Value)</SortExpression>
+                  <Direction>Descending</Direction>
+                </SortBy>
+              </Sorting>
+              <Label>=Year(Fields(Parameters!TimeSlicer.Value).Value)</Label>
+            </DynamicCategories>
+          </CategoryGrouping>
+        </CategoryGroupings>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!LineTotal.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                    <Format>C0</Format>
+                  </Style>
+                  <Value>=Sum(Fields!LineTotal.Value)</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Style>
+                  <BackgroundColor>Cornsilk</BackgroundColor>
+                  <BackgroundGradientEndColor>=IIF(Year(Fields(Parameters!TimeSlicer.Value).Value)=Parameters!Year.Value, "Gold", "Blue")</BackgroundGradientEndColor>
+                  <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                </Style>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+      </Chart>
+      <Line Name="line1">
+        <Top>0.625in</Top>
+        <Width>7.625in</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Height>0in</Height>
+      </Line>
+    </ReportItems>
+    <Height>3.625in</Height>
+  </Body>
+  <PageHeader>
+    <ReportItems>
+      <Textbox Name="textbox28">
+        <Width>5.375in</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>20pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>Sales Comparison TY vs LY Sales</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.375in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageHeader>
+  <rd:ReportID>08d51bdc-76c6-4c71-95cf-1eef4c7c1de5</rd:ReportID>
+  <LeftMargin>0.5in</LeftMargin>
+  <DataSets>
+    <DataSet Name="AW_Sales">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>="SELECT     Sales.Customer.CustomerID, Sales.Customer.CustomerType, Sales.SalesOrderHeader.SalesOrderNumber, Production.Product.Name,                       Production.Product.ProductNumber, Production.Product.ProductLine, Production.Product.Class, Production.Product.Style,                       Sales.SalesOrderHeader.ShipDate, Sales.Store.Name AS Customer_Name, Sales.SalesOrderDetail.LineTotal,                       Sales.SalesTerritory.Name AS Territory_Name, Sales.SalesTerritory.[Group] AS Territory_Group, Person.StateProvince.Name AS State,                       Sales.SalesOrderHeader.DueDate, Sales.SalesOrderHeader.OrderDate, Sales.SalesOrderDetail.OrderQty, Production.Product.Size,                       Production.Product.Color, HumanResources.vEmployee.FirstName + ' ' + HumanResources.vEmployee.LastName AS SalesPerson_FullName,                       Production.vProductModelCatalogDescription.WarrantyPeriod, Production.vProductModelCatalogDescription.Material,                        Production.vProductModelCatalogDescription.RiderExperience FROM         Sales.SalesOrderDetail INNER JOIN                       Sales.SalesOrderHeader ON Sales.SalesOrderDetail.SalesOrderID = Sales.SalesOrderHeader.SalesOrderID INNER JOIN                       Sales.Customer ON Sales.SalesOrderHeader.CustomerID = Sales.Customer.CustomerID INNER JOIN                       Production.Product ON Sales.SalesOrderDetail.ProductID = Production.Product.ProductID INNER JOIN                       Sales.Store ON Sales.Customer.CustomerID = Sales.Store.CustomerID INNER JOIN                       Sales.SalesTerritory ON Sales.SalesOrderHeader.TerritoryID = Sales.SalesTerritory.TerritoryID AND                        Sales.Customer.TerritoryID = Sales.SalesTerritory.TerritoryID INNER JOIN                       Person.Address ON Sales.SalesOrderHeader.BillToAddressID = Person.Address.AddressID AND                       Sales.SalesOrderHeader.ShipToAddressID = Person.Address.AddressID INNER JOIN                       Person.StateProvince ON Person.Address.StateProvinceID = Person.StateProvince.StateProvinceID  INNER JOIN                       HumanResources.vEmployee ON Sales.Store.SalesPersonID = HumanResources.vEmployee.EmployeeID LEFT JOIN                       Production.vProductModelCatalogDescription ON Production.Product.ProductModelID = Production.vProductModelCatalogDescription.ProductModelID WHERE Month(" &amp; Parameters!TimeSlicer.Value &amp; ") IN (" &amp; Join(Parameters!Month.Value,",") &amp; ")" &amp; " AND Year(" &amp; Parameters!TimeSlicer.Value &amp; ") IN (" &amp; Parameters!Year.Value &amp; "," &amp; Parameters!Year.Value -1 &amp; ")"</CommandText>
+        <DataSourceName>AdventureWorks</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="CustomerID">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>CustomerID</DataField>
+        </Field>
+        <Field Name="CustomerType">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CustomerType</DataField>
+        </Field>
+        <Field Name="SalesOrderNumber">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SalesOrderNumber</DataField>
+        </Field>
+        <Field Name="Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="ProductNumber">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ProductNumber</DataField>
+        </Field>
+        <Field Name="ProductLine">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ProductLine</DataField>
+        </Field>
+        <Field Name="Class">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Class</DataField>
+        </Field>
+        <Field Name="Style">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Style</DataField>
+        </Field>
+        <Field Name="ShipDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>ShipDate</DataField>
+        </Field>
+        <Field Name="Customer_Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Customer_Name</DataField>
+        </Field>
+        <Field Name="LineTotal">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>LineTotal</DataField>
+        </Field>
+        <Field Name="Territory_Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Territory_Name</DataField>
+        </Field>
+        <Field Name="Territory_Group">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Territory_Group</DataField>
+        </Field>
+        <Field Name="State">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>State</DataField>
+        </Field>
+        <Field Name="DueDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>DueDate</DataField>
+        </Field>
+        <Field Name="OrderDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>OrderDate</DataField>
+        </Field>
+        <Field Name="OrderQty">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>OrderQty</DataField>
+        </Field>
+        <Field Name="Size">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Size</DataField>
+        </Field>
+        <Field Name="Color">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Color</DataField>
+        </Field>
+        <Field Name="SalesPerson_FullName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>SalesPerson_FullName</DataField>
+        </Field>
+        <Field Name="WarrantyPeriod">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>WarrantyPeriod</DataField>
+        </Field>
+        <Field Name="Material">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Material</DataField>
+        </Field>
+        <Field Name="RiderExperience">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>RiderExperience</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Groupers">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>Select 'Sales Person' as Label , 'SalesPerson_FullName' as Value
+UNION
+Select 'Size' as Label , 'Size' as Value
+UNION
+Select 'Color' as Label , 'Color' as Value
+UNION
+Select 'State' as Label , 'State' as Value
+UNION
+Select 'Territory' as Label , 'Territory_Name' as Value
+UNION
+Select 'Customer' as Label , 'Customer_Name' as Value
+UNION
+Select 'Warranty Period' as Label , 'WarrantyPeriod' as Value
+UNION
+Select 'Rider Experience' as Label , 'RiderExperience' as Value
+UNION
+Select 'Material' as Label , 'Material' as Value
+
+ORDER BY Label</CommandText>
+        <DataSourceName>AdventureWorks</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="Label">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Label</DataField>
+        </Field>
+        <Field Name="Value">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Value</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Author>David Leibowitz - dleibowitz@cgsinc.com</Author>
+  <Code />
+  <Width>10.20082in</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Description>Advanced Matrix Reporting - dleibowitz@cgsinc.com</Description>
+  <Language>en-US</Language>
+  <TopMargin>0.5in</TopMargin>
+  <PageHeight>8.5in</PageHeight>
+</Report>

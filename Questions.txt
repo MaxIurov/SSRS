@@ -1,0 +1,65 @@
+What questions must you answer before you start developing reports? Write at least 5 of them.
+
+1.	The client requests one table to be able to receive data from different databases. How will you do it?
+- You can prompt user for credentials, server name, database and so on. I made report "DataSourceTest.rdl" to test it.
+
+2.	The client requests one table to be able to receive data from different databases so that the names of servers and databases may
+change during the usage. How will you do it?
+- Same. But maybe it is better to connect to "main" database and use Stored Procedure to do whatever you want there.
+
+3.	There are several dozen frequently used reports. You need to create new reports and periodically refine older ones. The client proposes
+to use SQL queries directly from the report, speaking in favor of the existing practice and organizational challenges of creating stored
+procedure. What will you say to them?
+- We need to consider pros and cons.
+
+4.	What happens if you start a report where the parameters have default values? Please write about one scenario where this is helpful
+and another one where it’s not.
+- If all parameters have values report will execute and show results. It is helpful if it runs very fast. That would be a pain to wait
+for data you dont even want for several minutes.
+
+5.	The client requests some parameters to be optional. How should you use a procedure in this case?
+- I will send special values when parameters are not used like 0 for ID or "default" for string.
+
+1.	The client request good looking and creative reports that their customers will like. What can you offer them? What clarifying questions
+you need to ask the client?
+- First how customers will view them (web, pdf, xlsx, image, printed). Now i can at lest decide on colors and drilldowns.
+
+2.	A report contains many columns and does not fit in the width of the page or the screen. What solution can you offer the client?
+- Arrange colums in two or more rows. If report becomes too long - show/hide some information on click.
+
+3.	The client liked a pie chart in the test database that shows quarterly sales of 12 products over one and a half years. The client’s
+database contains data on the customers they gathered for at least 8 years for 10 000 products. How must you implement the chart for it not
+to disappoint the client with real data?
+- I need to reduce number of groups on both axis. Maybe use different chart type. It depends on data and what client wants to compare.
+
+4.	What controls mustn’t be used if a report is to be sent to print or PDF forms?
+- No interactive controls (show/expand additional data). Add headers, footers, page numbers.
+
+5.	The client has a chain of stores in USA, Canada, Germany and other countries. Business users view reports in regional offices. The
+main base has the “SaleDate DateTime” field. How to display the date according to the following formats? 
+     a. In the US format (mm/dd/yyyy) for everyone 
+     b. In a regional format for each office.
+- Expression "=User!Language" works fine. Format reports based on it. If they got their own databases and reporting server default
+format might work.
+
+
+1.	The client views reports from the application using the “ReportViewer” control (a standard control). The report that the client
+requested have, among other things, such parameters as “StartDate” and “EndDate”. The client’s database is rather large, there is a lot
+of historical data, the report has an average level of difficulty. Which answers must you obtain in order to write the SQL part?
+- Do they have multiple tables/databases (history and recent data), aggregated/precalculated data.
+
+2.	Major customers of our client complain about the slow performance (or timeouts) of a legacy report. At a first glance, the report looks
+like a summary report and is half a page long. It is said that the report has been running for a long time, but the problems started occurring
+about a year ago. Since then they have had to periodically increase the timeouts. What would you do?
+- Make sure this is a database problem (no aggregations and filters in report). If they got no DBA check DB for query and execution plan.
+Add/Rebuild statistics/indexes, add indexed view or whatever (script to precalculate this at night).
+
+3.	The client views reports from the application using the “ReportViewer” control (a standard control). The report is presented in the form
+of operations statement for a certain period and can consist of a thousand pages. The report’s footer has “TotalPages”, and “Totals” and
+“Subtotals” are calculated in the report itself. The client requests to add a “DocumentMap” for a more convenient navigation inside the large
+report. How will you do it?
+- Add labels for groups with "Totals" and "Subtotals". Put totals on group header insted of footer.
+
+4.	The client has 200 reports. They request to add a footer (with a number of the current page) to every report. How will you do it?
+- If they got "Report Part" for this i will use it. If not i can update *.rdl files with new "<PageFooter>" using text editor. Or add
+report part with text editor for every report in case they want to change font tomorrow.
